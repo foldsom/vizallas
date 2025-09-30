@@ -1,0 +1,50 @@
+﻿@page
+@model vizallas.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Vizallas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Vizallas.Id" />
+            <div class="form-group">
+                <label asp-for="Vizallas.Datum" class="control-label"></label>
+                <input asp-for="Vizallas.Datum" class="form-control" />
+                <span asp-validation-for="Vizallas.Datum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vizallas.VizallaS" class="control-label"></label>
+                <input asp-for="Vizallas.VizallaS" class="form-control" />
+                <span asp-validation-for="Vizallas.VizallaS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vizallas.Varos" class="control-label"></label>
+                <input asp-for="Vizallas.Varos" class="form-control" />
+                <span asp-validation-for="Vizallas.Varos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vizallas.Folyo" class="control-label"></label>
+                <input asp-for="Vizallas.Folyo" class="form-control" />
+                <span asp-validation-for="Vizallas.Folyo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

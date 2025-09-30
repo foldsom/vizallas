@@ -1,11 +1,14 @@
-using vizallas.Models;
+using vizallas.Models; 
+using Microsoft.EntityFrameworkCore;
+using vizallas.Data;
+using Microsoft.Data.Sqlite;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<VizallasContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("VizallasContext") ?? throw new InvalidOperationException("Connection string 'VizallasContext' not found.")));
+    options.UseSqlite("Data Source=Vizallas.db"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

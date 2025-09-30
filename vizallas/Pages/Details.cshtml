@@ -1,0 +1,43 @@
+﻿@page
+@model vizallas.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Vizallas</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vizallas.Datum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vizallas.Datum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vizallas.VizallaS)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vizallas.VizallaS)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vizallas.Varos)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vizallas.Varos)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vizallas.Folyo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vizallas.Folyo)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Vizallas.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
