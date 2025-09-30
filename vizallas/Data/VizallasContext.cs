@@ -9,7 +9,7 @@ namespace vizallas.Data
 
         public DbSet<Vizallas> Vizallas { get; set; } = default!;
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)//xdd
         {
             modelBuilder.Entity<Vizallas>().ToTable("Vizallas");
         }
