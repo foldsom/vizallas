@@ -1,8 +1,11 @@
+using vizallas.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddDbContext<VizallasContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("VizallasContext") ?? throw new InvalidOperationException("Connection string 'VizallasContext' not found.")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
