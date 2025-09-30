@@ -1,40 +1,27 @@
-using vizallas.Models; 
 using Microsoft.EntityFrameworkCore;
 using vizallas.Data;
-using Microsoft.Data.Sqlite;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-var dbPath = Path.Combine(builder.Environment.ContentRootPath, "Vizallas.db");
-builder.Services.AddDbContext<VizallasContext>(options =>
-    options.UseSqlite($"Data Source={dbPath}"));
-
-// Add services to the container.
 builder.Services.AddRazorPages();
+
+// ABSZOLÚT útvonalra alakítjuk, így biztosan oda készül a fájl:
+var cs = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=Vizallas.db";
+var dbPath = cs.StartsWith("Data Source=", StringComparison.OrdinalIgnoreCase)
+    ? $"Data Source={Path.Combine(builder.Environment.ContentRootPath, cs.Substring("Data Source=".Length))}"
+    : cs;
+
+builder.Services.AddDbContext<VizallasContext>(o => o.UseSqlite(dbPath));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
+// **VAGY** migráció, **VAGY** EnsureCreated – NE együtt! (ajánlott a migráció)
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<VizallasContext>();
+    db.Database.Migrate();           // ha akarsz migrációt
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
-app.UseAuthorization();
-
 app.MapRazorPages();
-
 app.Run();
