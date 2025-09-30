@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace vizallas.Models
 {
@@ -11,8 +12,9 @@ namespace vizallas.Models
         [DataType(DataType.Date)]
         public DateTime Datum { get; set; }
 
+        [Column("Vizallas")]
         [Display(Name = "Vízállás (cm)")]
-        public int Vizallas { get; set; }
+        public int Ertek { get; set; }
 
         [Required, Display(Name = "Város")]
         public string Varos { get; set; } = string.Empty;

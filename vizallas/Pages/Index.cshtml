@@ -17,7 +17,7 @@
                 @Html.DisplayNameFor(model => model.Vizallas[0].Datum)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Vizallas[0].VizallaS)
+                @Html.DisplayNameFor(model => model.Vizallas[0].Ertek)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Vizallas[0].Varos)
@@ -29,26 +29,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Vizallas) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Datum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VizallaS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Varos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Folyo)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Vizallas)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ertek)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Varos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Folyo)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
