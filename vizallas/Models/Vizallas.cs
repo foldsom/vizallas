@@ -9,7 +9,7 @@ namespace vizallas.Models
         [DataType(DataType.Date)]
         public DateTime Datum { get; set; }
 
-        public int VizallasErtek { get; set; }
+        public int Vizallas { get; set; }
 
         [Required]
         public string Varos { get; set; } = string.Empty;
