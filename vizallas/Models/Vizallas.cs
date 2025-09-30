@@ -1,12 +1,20 @@
-﻿namespace vizallas.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace vizallas.Models
 {
     public class Vizallas
     {
         public int Id { get; set; }
-        public DateTime Datum { get; set; }
-        public int VizallaS { get; set; }
-        public string Varos { get; set; } = string.Empty;
-        public string Folyo { get; set; } = string.Empty;
 
+        [DataType(DataType.Date)]
+        public DateTime Datum { get; set; }
+
+        public int VizallasErtek { get; set; }
+
+        [Required]
+        public string Varos { get; set; } = string.Empty;
+
+        [Required]
+        public string Folyo { get; set; } = string.Empty;
     }
 }
